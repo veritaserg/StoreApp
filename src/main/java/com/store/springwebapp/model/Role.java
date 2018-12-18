@@ -1,4 +1,4 @@
-package com.store.model;
+package com.store.springwebapp.model;
 
 
 import lombok.AllArgsConstructor;

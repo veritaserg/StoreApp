@@ -1,14 +1,11 @@
-package com.store.service;
+package com.store.springwebapp.service;
 
-import com.store.model.Role;
-import com.store.model.User;
-import com.store.repository.RoleRepository;
-import com.store.repository.UserRepository;
+import com.store.springwebapp.model.User;
+
+import com.store.springwebapp.repository.RoleRepository;
+import com.store.springwebapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,10 +17,10 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
 
-
     @Override
     public void save(User user) {
-            userRepository.save(user);
+
+        userRepository.save(user);
     }
 
     @Override

@@ -1,18 +1,16 @@
-package com.store.model;
+package com.store.springwebapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder(toBuilder = true)
+@ToString
+@Entity
 @Table(name = "users")
 public class User {
 
@@ -33,4 +31,5 @@ public class User {
     private Set<Role> roles;
 
 
-    }
+
+}
