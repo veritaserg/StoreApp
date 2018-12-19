@@ -3,9 +3,11 @@ package com.store.springwebapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.BitSet;
 import java.util.Set;
 
 @Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)

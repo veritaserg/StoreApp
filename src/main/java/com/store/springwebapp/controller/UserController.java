@@ -2,7 +2,6 @@ package com.store.springwebapp.controller;
 
 
 import com.store.springwebapp.model.User;
-import com.store.springwebapp.repository.UserRepository;
 import com.store.springwebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String test() {
-        return "test";
+        return "login";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST )
