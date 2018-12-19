@@ -1,9 +1,9 @@
-package com.store.springwebapp.service;
+package com.store.springwebapp.service.impl;
 
 import com.store.springwebapp.model.User;
-
 import com.store.springwebapp.repository.RoleRepository;
 import com.store.springwebapp.repository.UserRepository;
+import com.store.springwebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
