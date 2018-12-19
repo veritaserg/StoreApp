@@ -19,8 +19,10 @@ public class SecurityServiceImpl implements SecurityService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+
+
+   @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
     @Override
     public String findLoggedInUsername() {
