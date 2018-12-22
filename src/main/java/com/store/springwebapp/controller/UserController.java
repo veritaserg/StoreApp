@@ -2,7 +2,9 @@ package com.store.springwebapp.controller;
 
 
 import com.store.springwebapp.model.User;
+import com.store.springwebapp.service.SecurityService;
 import com.store.springwebapp.service.UserService;
+import com.store.springwebapp.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +18,47 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private SecurityService securityService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String test() {
+    @Autowired
+    private UserValidator userValidator;
+
+
+    @RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
+        public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect.");
+        }
+        if (logout != null) {
+            model.addAttribute("logout", "Logged out successfully.");
+
+        }
         return "login";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST )
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST )
 public String test(@ModelAttribute("user") User user, BindingResult bindingResult, Model model){
+        userValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        securityService.autoLogin(user.getUsername(), user.getConfirmPassword());
 
         userService.save(user);
 
-        return "hello";
+        return "redirect:/welcome";
 }
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "welcome";
+    }
 
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
 
+        return "registration";
+    }
 }

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" >
+    <title>Registration</title>
 </head>
 <body>
-<h2>Registration</h2>
+<h1 th:inline="text">Create an account</h1>
+<div>
+    <form th:action="@{/registration}" th:object="${userForm}" method="post">
+
+        <table>
+            <tr>
+                <td>User Name:</td>
+                <td><input type="text" th:field="*{username}" /></td>
+                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>
+            </tr>
+            <tr>
+                <td/>
+                <td><button type="submit">Create</button></td>
+            </tr>
+        </table>
+    </form>
+    <h4><a th:href="@{/login}">Return</a></h4>
+</div>
 </body>
 </html>

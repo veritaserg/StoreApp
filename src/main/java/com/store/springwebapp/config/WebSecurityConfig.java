@@ -31,9 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/resources/**", "/registration","/error").permitAll()
+                .antMatchers("/", "/index","/welcome","/resources/**", "/registration","/error").permitAll()
                 .antMatchers("/moderator").access("hasRole('ROLE_MODERATOR')")
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
