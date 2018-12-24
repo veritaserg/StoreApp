@@ -52,8 +52,10 @@ public String test(@ModelAttribute("user") User user, BindingResult bindingResul
 }
     @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+
         return "welcome";
     }
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
