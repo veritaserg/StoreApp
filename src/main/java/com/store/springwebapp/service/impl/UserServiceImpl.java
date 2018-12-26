@@ -15,6 +15,7 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
 
+
     @Autowired
     private UserRepository userRepository;
 
@@ -28,10 +29,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
 user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.getOne(1l));
-        user.setRoles(roles);
-        userRepository.save(user);
+     Set<Role> roles = new HashSet<>();
+     roles.add(roleRepository.getOne(1l));
+
+     user.setRoles(roles);
+       userRepository.save(user);
     }
 
     @Override

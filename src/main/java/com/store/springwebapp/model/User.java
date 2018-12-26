@@ -3,14 +3,13 @@ package com.store.springwebapp.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.BitSet;
 import java.util.Set;
 
 @Data
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder = true)
+@Builder
 @ToString
 @Entity
 @Table(name = "users")
@@ -26,12 +25,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
-    @Transient
-    private String confirmPassword;
 
     @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
 
 

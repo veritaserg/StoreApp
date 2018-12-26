@@ -39,19 +39,20 @@ public class UserController {
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST )
-public String test(@ModelAttribute("user") User user, BindingResult bindingResult, Model model){
-        userValidator.validate(user, bindingResult);
+public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
+//        userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-        securityService.autoLogin(user.getUsername(), user.getConfirmPassword());
+        String passwordBeforeEncode = userForm.getPassword();
+ securityService.autoLogin(userForm.getUsername(),passwordBeforeEncode);
 
-        userService.save(user);
+        userService.save(userForm);
 
         return "redirect:/welcome";
 }
     @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
+    public String welcome() {
 
         return "welcome";
     }
@@ -59,7 +60,7 @@ public String test(@ModelAttribute("user") User user, BindingResult bindingResul
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+        model.addAttribute("userForm", User.builder().build());
 
         return "registration";
     }
