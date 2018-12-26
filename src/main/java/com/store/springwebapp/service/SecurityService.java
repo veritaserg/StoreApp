@@ -1,7 +1,11 @@
 package com.store.springwebapp.service;
 
-public interface SecurityService {
-    String findLoggedInUsername();
+import java.util.Optional;
 
-    void autoLogin(String username, String password);
+import org.springframework.security.core.Authentication;
+
+public interface SecurityService {
+    Optional<String> findLoggedInUsername();
+    void autologin(String username, String password);
+    Authentication getAuthentication();
 }

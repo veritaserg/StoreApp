@@ -40,12 +40,12 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST )
 public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
-//        userValidator.validate(user, bindingResult);
+       userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "registration";
+                       return "registration";
         }
         String passwordBeforeEncode = userForm.getPassword();
- securityService.autoLogin(userForm.getUsername(),passwordBeforeEncode);
+        securityService.autologin(userForm.getUsername(), passwordBeforeEncode);
 
         userService.save(userForm);
 

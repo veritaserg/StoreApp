@@ -6,11 +6,9 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
 @Entity
 @Table(name = "users")
 public class User {
