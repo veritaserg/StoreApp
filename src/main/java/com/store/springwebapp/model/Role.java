@@ -24,6 +24,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    @Transient
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 }
