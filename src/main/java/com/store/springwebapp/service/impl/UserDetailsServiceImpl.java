@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
     @Autowired
     private UserRepository userRepository;
 
@@ -28,18 +28,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
-        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
-
-        user.orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + username));
-
-        logger.debug("Method loadUserByUsername was able to find the user: " + user.get().getUsername());
+        User user = userRepository.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.get().getRoles()) {
+        for (Role role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
-        return new org.springframework.security.core.userdetails.User(user.get().getUsername(),
-                user.get().getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(),
+                user.getPassword(), grantedAuthorities);
     }
 }

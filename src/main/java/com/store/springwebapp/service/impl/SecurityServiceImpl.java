@@ -4,6 +4,7 @@ import com.store.springwebapp.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,41 +27,30 @@ public class SecurityServiceImpl implements SecurityService {
     private UserDetailsServiceImpl userDetailsService;
 
     @Override
-    public Optional<String> findLoggedInUsername() {
-        String userName;
-        Object principal = getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
+    public String findLoggedInUsername() {
+        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        if (userDetails instanceof UserDetails) {
+            return ((UserDetails) userDetails).getUsername();
         }
-        return Optional.ofNullable(userName);
+        return null;
     }
 
 
 
     @Override
     public void autologin(String username, String password) {
-        try {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                    new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        authenticationManager.authenticate(authenticationToken);
 
-            Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        if (authenticationToken.isAuthenticated()) {
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-            if (usernamePasswordAuthenticationToken.isAuthenticated()) {
-                SecurityContextHolder.getContext().setAuthentication(auth);
-                logger.debug(String.format("Auto login %s successfully!", username));
-            }
-        } catch (UsernameNotFoundException e) {
-            logger.error("Autologin did not work. Username not found: " + username);
+            logger.debug(String.format("Successfully %s auto logged in", username));
         }
     }
-    @Override
-    public Authentication getAuthentication() {
-        return SecurityContextHolder.getContext().getAuthentication();
-    }
+
 
 }
