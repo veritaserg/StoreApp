@@ -49,14 +49,13 @@ public String registration(@ModelAttribute("userForm") User userForm, BindingRes
 
         userService.save(userForm);
         System.out.println(userForm);
-        return "redirect:/welcome";
+        return "redirect:/product";
 }
-    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/product"}, method = RequestMethod.GET)
     public String welcome() {
 
-        return "welcome";
+        return "product";
     }
-
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
