@@ -31,8 +31,8 @@ private String name;
     @JoinColumn(name="manufacturer_id", nullable=false)
     private Manufacturer manufacturer;
 
-    @Column(name = "dateTime")
-private LocalDateTime dateTime;
+    @Column(name = "createdDate")
+private LocalDateTime createdDate;
 
     @Column(name = "term")
 private int term;
