@@ -23,33 +23,46 @@ public class SecurityServiceImpl implements SecurityService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-   @Autowired
+    @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
     @Override
-    public String findLoggedInUsername() {
-        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if (userDetails instanceof UserDetails) {
-            return ((UserDetails) userDetails).getUsername();
+    public Optional<String> findLoggedInUsername() {
+        String userName;
+        Object principal = getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
         }
-        return null;
+        return Optional.ofNullable(userName);
     }
 
 
 
     @Override
     public void autologin(String username, String password) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        try {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-        authenticationManager.authenticate(authenticationToken);
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                    new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        if (authenticationToken.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-            logger.debug(String.format("Successfully %s auto logged in", username));
+            if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+                SecurityContextHolder.getContext().setAuthentication(auth);
+                logger.debug(String.format("Auto login %s successfully!", username));
+            }
+        } catch (UsernameNotFoundException e) {
+            logger.error("Autologin did not work. Username not found: " + username);
         }
+    }
+
+    @Override
+    public Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 
 
