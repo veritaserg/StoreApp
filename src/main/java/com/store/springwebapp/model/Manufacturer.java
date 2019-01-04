@@ -21,6 +21,7 @@ public class Manufacturer {
     @Column(name = "name")
     private String name;
 
+    @Transient
     @OneToMany(mappedBy="manufacturer", cascade = CascadeType.ALL)
     private Set<Product> products;
 
