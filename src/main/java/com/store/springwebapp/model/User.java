@@ -24,11 +24,14 @@ public class User {
     @Column(name = "password")
     private String password;
 
+
     @ManyToMany
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
 
+    @Transient
+    private String confirmPassword;
 
 
 }
