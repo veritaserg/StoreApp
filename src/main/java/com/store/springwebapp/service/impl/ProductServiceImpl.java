@@ -16,12 +16,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
+        productRepository.save(product);
 
     }
 
     @Override
     public Product findById(Long id) {
-        return null;
+        return  productRepository.getOne(id);
     }
 
     @Override
@@ -31,11 +32,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void update(Product product) {
-
+productRepository.save(product);
     }
 
     @Override
     public void deleteById(Long id) {
-
+productRepository.deleteById(id);
     }
 }
