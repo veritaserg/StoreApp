@@ -1,10 +1,12 @@
 package com.store.springwebapp.controller;
 
+import com.store.springwebapp.model.Product;
 import com.store.springwebapp.service.impl.ManufacturerServiceImpl;
 import com.store.springwebapp.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,4 +25,12 @@ public class ProductController {
     model.addAttribute("productList",productService.findAll());
         return "product";
     }
+    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("product") Product product) {
+     productService.save(product);
+
+        return "redirect:/product";
+    }
+
+
 }

@@ -59,6 +59,39 @@
         </tr>
     </table>
 </div>
+<div>
+    <form th:action="@{/product/add}"  th:object="${product}" method="post">
+        <h2>Add product</h2>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                      </tr>
+            <tr>
+                <td>Cost:</td>
+                <td><input type="text" th:field="*{cost}" /></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{manufacturer}" /></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+
+
+
+</div>
+
+
+
+
+
 <br/>
 
 </body>
