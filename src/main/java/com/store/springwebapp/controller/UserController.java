@@ -27,6 +27,7 @@ public class UserController {
 
     @RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
         public String login(Model model, String error, String logout) {
+
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
@@ -34,6 +35,7 @@ public class UserController {
             model.addAttribute("logout", "Logged out successfully.");
 
         }
+
         return "login";
     }
 
@@ -62,5 +64,10 @@ public String registration(@ModelAttribute("userForm") User userForm, BindingRes
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
         return "admin";
+    }
+
+    @RequestMapping(value = "/moderator", method = RequestMethod.GET)
+    public String moderator(Model model) {
+        return "moderator";
     }
 }

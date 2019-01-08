@@ -37,8 +37,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/moderator").access("hasRole('ROLE_MODERATOR')")
+                .antMatchers("/moderator").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/product").permitAll()
                 .and().logout().permitAll();
     }
     @Autowired
