@@ -63,11 +63,9 @@ public String registration(@ModelAttribute("userForm") User userForm, BindingRes
     }
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
+
         return "admin";
     }
 
-    @RequestMapping(value = "/moderator", method = RequestMethod.GET)
-    public String moderator(Model model) {
-        return "moderator";
-    }
+
 }

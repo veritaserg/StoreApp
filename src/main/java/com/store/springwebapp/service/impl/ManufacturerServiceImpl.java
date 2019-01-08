@@ -6,6 +6,8 @@ import com.store.springwebapp.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
 
@@ -16,4 +18,10 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Manufacturer findByName(String name) {
         return manufacturerRepository.findByName(name);
     }
+
+    @Override
+    public List<Manufacturer> findAll() {
+        return manufacturerRepository.findAll();
+    }
+
 }

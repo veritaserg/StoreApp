@@ -1,13 +1,16 @@
 package com.store.springwebapp.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -18,24 +21,27 @@ import java.time.LocalDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
-private String name;
+    private String name;
 
     @Column(name = "cost")
     private BigDecimal cost;
 
     @ManyToOne
-    @JoinColumn(name="manufacturer_id", nullable=false)
+    @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;
 
+
     @Column(name = "createdDate")
-private LocalDateTime createdDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
 
     @Column(name = "term")
-private int term;
+    private int term;
 
 
 }

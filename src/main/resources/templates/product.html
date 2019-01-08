@@ -48,6 +48,7 @@
             <th>CreatedDate</th>
             <th>Term</th>
 
+
         </tr>
         <tr th:each="product: ${productList}">
             <td th:text="${product.id}"></td>
@@ -56,6 +57,7 @@
             <td th:text="${product.manufacturer.getName()}"></td>
             <td th:text="${product.createdDate}"></td>
             <td th:text="${product.term}"></td>
+
         </tr>
     </table>
 </div>

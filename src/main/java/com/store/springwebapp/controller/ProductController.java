@@ -38,12 +38,7 @@ public class ProductController {
         return "product";
     }
 
-    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute("product") Product product) {
-        productService.save(product);
 
-        return "redirect:/product";
-    }
 
     @RequestMapping("/remove/{id}")
     public String removeProduct(@PathVariable("id") Long id) {
@@ -52,13 +47,8 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    @RequestMapping("edit/{id}")
-    public String editProduct(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("product", productService.findById(id));
-        model.addAttribute("productList", productService.findAll());
 
-        return "product";
-    }
+
 
     @RequestMapping("productdata/{id}")
     public String productData(@PathVariable("id") Long id, Model model) {
