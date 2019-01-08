@@ -42,9 +42,7 @@ public class ModeratorControler {
     }
     @RequestMapping("/delete/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
-
       productService.deleteById(id);
-
         return "redirect:/moderator";
     }
 }

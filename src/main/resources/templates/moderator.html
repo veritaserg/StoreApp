@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -60,7 +62,7 @@
             <td th:text="${product.manufacturer.getName()}"></td>
             <td th:text="${product.createdDate}"></td>
             <td th:text="${product.term}"></td>
-            <td><a th:href="@{/edit/${product.id}}">Edit</a></td>
+            <td><a th:href="@{/edit/{id}(id=${product.id})}"><span>Edit</span></a></td>
             <td><a th:href="@{/delete/{id}(id=${product.id})}"><span>Delete</span></a></td>
         </tr>
 
