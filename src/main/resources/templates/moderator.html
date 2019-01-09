@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>Product</title>
     <style>
@@ -70,37 +69,38 @@
 </div>
 <h2>Add Product</h2>
 <div>
-    <form th:action="@{/product/add}" th:object="${product}" method="post">
+    <form th:action="@{/product/add}"  method="post">
         <table>
             <tr>
-                <td>Name:</td>
+                <td>Name</td>
                 <td><input type="text" name="name" class="form-control" /></td>
+
             </tr>
             <tr>
                 <td>Cost:</td>
-                <td><input type="text" name="cost" class="form-control" /></td>
+                <td><input type="text" name="cost" class="form-control"/></td>
             </tr>
             <tr>
                 <td>Select Manufacturer:</td>
                 <td>
                     <select class="form-control" name="manufacturer">
-                        <option value=""> -- </option>
+                        <option value=""> --</option>
                         <option th:each="manufacture : ${manufactureList}"
                                 th:value="${manufacture.id}"
                                 th:utext="${manufacture.name}"/>
                     </select>
 
-                            </tr>
+            </tr>
             <tr>
                 <td>CreatedDate:</td>
-                <td><input type="date" name="createdDate" class="form-control" /></td>
+                <td><input type="date" name="createdDate" class="form-control"/></td>
             </tr>
             <tr>
                 <td>Term:</td>
-                <td><input type="text" name="term" class="form-control" /></td>
+                <td><input type="text" name="term" class="form-control"/></td>
             </tr>
-                        <tr>
-                <td/>
+            <td>
+            </td>
                 <td>
                     <button type="submit">Save</button>
                 </td>

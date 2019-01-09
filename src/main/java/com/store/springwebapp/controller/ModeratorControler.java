@@ -22,28 +22,37 @@ public class ModeratorControler {
     @RequestMapping(value = "/moderator", method = RequestMethod.GET)
     public String moderator(Model model) {
         model.addAttribute("productList", productService.findAll());
-        model.addAttribute("manufactureList",manufacturerService.findAll());
-                return "moderator";
+        model.addAttribute("manufactureList", manufacturerService.findAll());
+        return "moderator";
 
     }
+
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product) {
-
+        System.out.println(product);
         productService.save(product);
 
         return "redirect:/moderator";
     }
+
     @RequestMapping("edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productService.findById(id));
-        model.addAttribute("productList", productService.findAll());
-
-        return "moderator";
+        model.addAttribute("manufactureList", manufacturerService.findAll());
+        return "editproduct";
     }
+
     @RequestMapping("/delete/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
-      productService.deleteById(id);
+        productService.deleteById(id);
+        return "redirect:/moderator";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute("product") Product product) {
+        System.out.println(product);
+        productService.save(product);
+
         return "redirect:/moderator";
     }
 }
-
