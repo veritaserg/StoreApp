@@ -1,11 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product</title>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            max-width: 70%;
+            width: 70%;
+            text-align: center;
+            border-collapse: collapse;
+            border-top: 7px solid #9baff1;
+            border-bottom: 7px solid #9baff1;
+        }
+        tr {
+            font-size: 13px;
+            font-weight: normal;
+            background: #e8edff;
+            border-right: 1px solid #9baff1;
+            border-left: 1px solid #9baff1;
+            color: #039;
+            padding: 8px;
+        }
+        td {
+            background: #e8edff;
+            border-right: 1px solid #aabcfe;
+            border-left: 1px solid #aabcfe;
+            color: #669;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
-<h2>Admin</h2>
+<h1 th:inline="text">Admin Application</h1>
 
+<div th:if="${not #lists.isEmpty(userList)}">
+    <h2>User List</h2>
+
+    <table class="table table-striped">
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+
+        </tr>
+        <tr th:each="user: ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.roles}"></td>
+            <td><a th:href="@{/admin/edit/{id}(id=${user.id})}"><span>Edit</span></a></td>
+            <td><a th:href="@{/admin/delete/{id}(id=${user.id})}"><span>Delete</span></a></td>
+        </tr>
+    </table>
+</div>
+ <!-- <div layout:fragment="content" th:remove="tag">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Edit Product</h3>
+<h3>Edit User</h3>
+</div>
+<table>
+    <div class="panel-body">
+        <form th:object="${user}" th:action="@{/admin/edit}" method="post">
+            <tr
+                    class="form-group">
+                <td><label for="name">Name</label></td>
+              <td><input type="hidden" class="form-control" id="id" th:field="*{id}"/>
+                    <input type="text" class="form-control" id="name" th:field="*{username}" placeholder="Name"/>
+                </td>
+            </tr>
+
+            <tr class="form-group">
+                <td><label>Role</label></td>
+                <td><select class="form-control" th:field="*{getRoles()}" style="width: 145px">
+                    <option value=""> --</option>
+                    <option th:each="role : ${roleList}"
+                            th:value="${role.id}"
+                            th:utext="${role.name}"/>
+                    </option>
+                </select>
+
+            </tr>
+
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary" value="Edit">Edit</button>
+                <a class="btn btn-danger" th:href="@{/moderator}">Moderator</a>
+            </td>
+            </tr>
+        </form>
+    </div>
+</table>
+    </div>
+</div> -->
 </body>
+</form>
 </html>

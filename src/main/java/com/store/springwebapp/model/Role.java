@@ -27,4 +27,9 @@ public class Role {
     @Transient
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

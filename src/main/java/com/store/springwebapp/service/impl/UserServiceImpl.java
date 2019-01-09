@@ -50,6 +50,11 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         return userRepository.getOne(id);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 //    public Optional<User> findByUsername() {
 //        Optional<String> username = securityService.findLoggedInUsername();
 //        if (username.isPresent()) {

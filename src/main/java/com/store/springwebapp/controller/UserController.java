@@ -61,11 +61,11 @@ public class UserController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
-        model.addAttribute("userList", userService.findALL());
+               model.addAttribute("userList", userService.findALL());
         return "admin";
     }
 
-    @RequestMapping("edit/{id}")
+    @RequestMapping("admin/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         model.addAttribute("roleList", roleService.findAll());
@@ -73,11 +73,15 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/edit{id}", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("user") User user) {
+
         userService.save(user);
-
-        return "redirect:/moderator";
-
+        return "redirect:/admin";
+    }
+    @RequestMapping("admin/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Long id) {
+        userService.deleteById(id);
+        return "redirect:/admin";
     }
 }
