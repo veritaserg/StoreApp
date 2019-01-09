@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -44,11 +45,21 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    public Optional<User> findByUsername() {
-        Optional<String> username = securityService.findLoggedInUsername();
-        if (username.isPresent()) {
-            return userRepository.findByUsername(username.get());
-        }
-        return Optional.empty();
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.getOne(id);
+    }
+//    public Optional<User> findByUsername() {
+//        Optional<String> username = securityService.findLoggedInUsername();
+//        if (username.isPresent()) {
+//            return userRepository.findByUsername(username.get());
+//        }
+//        return Optional.empty();
+//    }
+
+    @Override
+    public List<User> findALL() {
+        return userRepository.findAll();
     }
 }

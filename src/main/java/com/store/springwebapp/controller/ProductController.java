@@ -38,8 +38,6 @@ public class ProductController {
         return "product";
     }
 
-
-
     @RequestMapping("/remove/{id}")
     public String removeProduct(@PathVariable("id") Long id) {
         productService.deleteById(id);
@@ -47,15 +45,11 @@ public class ProductController {
         return "redirect:/product";
     }
 
-
-
-
     @RequestMapping("productdata/{id}")
     public String productData(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productService.findById(id));
 
         return "productdata";
     }
-
 
 }

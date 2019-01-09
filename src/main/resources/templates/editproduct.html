@@ -40,60 +40,62 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3>Edit Product</h3>
-                   </div>
+        </div>
         <table>
-        <div class="panel-body">
-            <form th:object="${product}" th:action="@{/save}"  method="post">
-              <tr
-                      class="form-group">
-                   <td><label for="name">Name</label></td>
-                <td> <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
-                    <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Name"/></td>
-              </tr>
+            <div class="panel-body">
+                <form th:object="${product}" th:action="@{/save}" method="post">
+                    <tr
+                            class="form-group">
+                        <td><label for="name">Name</label></td>
+                        <td><input type="hidden" class="form-control" id="id" th:field="*{id}"/>
+                            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Name"/>
+                        </td>
+                    </tr>
 
-                <tr
-                        class="form-group">
-                   <td> <label for="cost">Cost</label></td>
-                   <td> <input type="text" class="form-control" id="cost" th:field="*{cost}"
-                           placeholder="Cost"/></td>
-                </tr>
+                    <tr
+                            class="form-group">
+                        <td><label for="cost">Cost</label></td>
+                        <td><input type="text" class="form-control" id="cost" th:field="*{cost}"
+                                   placeholder="Cost"/></td>
+                    </tr>
 
-                <tr class="form-group">
-                   <td><label>Manufacture</label></td>
-                  <td>  <select class="form-control" th:field="*{manufacturer.id}" style="width: 145px">
-                      <option value=""> --</option>
-                      <option th:each="manufacture : ${manufactureList}"
-                              th:value="${manufacture.id}"
-                              th:utext="${manufacture.name}"/>
-                        </option>
-                    </select>
+                    <tr class="form-group">
+                        <td><label>Manufacture</label></td>
+                        <td><select class="form-control" th:field="*{manufacturer.id}" style="width: 145px">
+                            <option value=""> --</option>
+                            <option th:each="manufacture : ${manufactureList}"
+                                    th:value="${manufacture.id}"
+                                    th:utext="${manufacture.name}"/>
+                            </option>
+                        </select>
 
-                </tr>
+                    </tr>
 
-                <tr class="form-group">
-                  <td>  <label for="createdDate">CreatedDate</label></td>
-                  <td>  <input type="date" class="form-control" id="createdDate" th:field="*{createdDate}"
-                           placeholder="createdDate"/></td>
-                </tr>
+                    <tr class="form-group">
+                        <td><label for="createdDate">CreatedDate</label></td>
+                        <td><input type="date" class="form-control" id="createdDate" th:field="*{createdDate}"
+                                   placeholder="createdDate"/></td>
+                    </tr>
 
-                <tr class="form-group">
-                    <td><label for="term">Term</label></td>
-                   <td> <input type="text" class="form-control" id="term" th:field="*{term}" placeholder="term"/></td>
-                </tr>
-                <td>
-                </td>
+                    <tr class="form-group">
+                        <td><label for="term">Term</label></td>
+                        <td><input type="text" class="form-control" id="term" th:field="*{term}" placeholder="term"/>
+                        </td>
+                    </tr>
                     <td>
-                <button type="submit" class="btn btn-primary" value="Save">Save</button>
-                <a class="btn btn-danger" th:href="@{/moderator}">Cancel</a>
                     </td>
-                </tr>
-            </form>
-        </div>
+                    <td>
+                        <button type="submit" class="btn btn-primary" value="Save">Save</button>
+                        <a class="btn btn-danger" th:href="@{/moderator}">Cancel</a>
+                    </td>
+                    </tr>
+                </form>
+            </div>
         </table>
-            </form>
+        </form>
 
-        </div>
     </div>
+</div>
 </div>
 </body>
 </html>

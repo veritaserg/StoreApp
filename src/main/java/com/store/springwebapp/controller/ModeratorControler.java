@@ -29,14 +29,13 @@ public class ModeratorControler {
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)
     public String addProduct(@ModelAttribute("product") Product product) {
-        System.out.println(product);
-        productService.save(product);
+               productService.save(product);
 
         return "redirect:/moderator";
     }
 
     @RequestMapping("edit/{id}")
-    public String editBook(@PathVariable("id") Long id, Model model) {
+    public String editProduct(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productService.findById(id));
         model.addAttribute("manufactureList", manufacturerService.findAll());
         return "editproduct";
@@ -50,8 +49,7 @@ public class ModeratorControler {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("product") Product product) {
-        System.out.println(product);
-        productService.save(product);
+               productService.save(product);
 
         return "redirect:/moderator";
     }
