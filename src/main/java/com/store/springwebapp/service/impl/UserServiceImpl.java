@@ -34,11 +34,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-     Set<Role> roles = new HashSet<>();
-     roles.add(roleRepository.getOne(1l));
+        String role = String.valueOf(user.getRoles());
+        Set<Role> roles = new HashSet<>();
 
-     user.setRoles(roles);
-       userRepository.save(user);
+        if (role.equals("[ROLE_ADMIN]"))
+            roles.add(roleRepository.getOne(3L));
+
+        else if (role.equals("[ROLE_MODERATOR]"))
+            roles.add(roleRepository.getOne(2L));
+
+        else
+            roles.add(roleRepository.getOne(1L));
+
+        user.setRoles(roles);
+        userRepository.save(user);
     }
 
     @Override
@@ -55,13 +64,6 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
-//    public Optional<User> findByUsername() {
-//        Optional<String> username = securityService.findLoggedInUsername();
-//        if (username.isPresent()) {
-//            return userRepository.findByUsername(username.get());
-//        }
-//        return Optional.empty();
-//    }
 
     @Override
     public List<User> findALL() {

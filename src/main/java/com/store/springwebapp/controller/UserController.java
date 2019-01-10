@@ -69,14 +69,13 @@ public class UserController {
     public String editUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         model.addAttribute("roleList", roleService.findAll());
-        return "admin";
+        return "edituser";
 
     }
 
-    @RequestMapping(value = "admin/edit{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/save", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("user") User user) {
-
-        userService.save(user);
+                     userService.save(user);
         return "redirect:/admin";
     }
     @RequestMapping("admin/delete/{id}")
