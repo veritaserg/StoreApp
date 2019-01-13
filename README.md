@@ -21,7 +21,7 @@ Spring Boot Crud Application with Thymeleaf, JPA, Spring Security
 
 ## Screenshots
 
-[![1.jpg](https://i.postimg.cc/NMqYhQkC/1.jpg)](https://postimg.cc/hJrNTWwV)
+[![1.jpg](https://i.postimg.cc/dttFcHGF/1.jpg)](https://postimg.cc/Rq8ycTPp)
 
 [![2.jpg](https://i.postimg.cc/tCP3ykbr/2.jpg)](https://postimg.cc/9rmRYGrT)
 
