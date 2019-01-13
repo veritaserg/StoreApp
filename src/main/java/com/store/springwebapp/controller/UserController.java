@@ -48,8 +48,7 @@ public class UserController {
         }
         securityService.autologin(userForm.getUsername(), userForm.getPassword());
         userService.save(userForm);
-        System.out.println(userForm);
-        return "redirect:/product";
+        return "twilio";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -61,7 +60,7 @@ public class UserController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
-               model.addAttribute("userList", userService.findALL());
+        model.addAttribute("userList", userService.findALL());
         return "admin";
     }
 
@@ -75,9 +74,10 @@ public class UserController {
 
     @RequestMapping(value = "admin/save", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("user") User user) {
-                     userService.save(user);
+        userService.save(user);
         return "redirect:/admin";
     }
+
     @RequestMapping("admin/delete/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
         userService.deleteById(id);
