@@ -2,39 +2,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            max-width: 70%;
+            width: 70%;
+            text-align: center;
+            border-collapse: collapse;
+            border-top: 7px solid #9baff1;
+            border-bottom: 7px solid #9baff1;
+        }
+
+        tr {
+            font-size: 13px;
+            font-weight: normal;
+            background: #e8edff;
+            border-right: 1px solid #9baff1;
+            border-left: 1px solid #9baff1;
+            color: #039;
+            padding: 8px;
+        }
+
+        td {
+            background: #e8edff;
+            border-right: 1px solid #aabcfe;
+            border-left: 1px solid #aabcfe;
+            color: #669;
+            padding: 8px;
+        }
+    </style>
     <title>User Account Managment</title>
 
 </head>
 <body>
-<div class="form-style-2">
-    <div class="form-style-2-heading">
-<h1 th:inline="text">User Account Managment</h1>
-    </div>
-<span th:if="${error != null}" th:text="#{${error}}" />
-<span th:if="${logout != null}" th:text="#{${logout}}" />
+
+    <h1 th:inline="text">User Account Managment</h1>
+
+<span th:if="${error != null}" th:text="#{${error}}"/>
+<span th:if="${logout != null}" th:text="#{${logout}}"/>
 
 <div>
     <form th:action="@{/login}" method="post">
-        <h2 >Log in</h2>
+      <h2>Log in</h2>
+
         <table>
             <tr>
                 <td>User Name:</td>
-                <td><input type="text" name="username" class="form-control" autofocus="true" /></td>
+                <td><input type="text" name="username" class="form-control" autofocus="true"/></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type="password" class="form-control" name="password" /></td>
+                <td><input type="password" class="form-control" name="password"/></td>
             </tr>
             <tr>
                 <td/>
-                <td><button type="submit">Submit</button></td>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
             </tr>
         </table>
         <h4><a th:href="@{/registration}">Create an account</a></h4>
     </form>
 </div>
-</div>
+
 </body>
 </html>
