@@ -150,7 +150,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>com.github.veritaserg</groupId>
+                                    <groupId>com.github.jsimone</groupId>
                                     <artifactId>webapp-runner</artifactId>
                                     <version>7.0.22.3</version>
                                     <destFileName>webapp-runner.jar</destFileName>
