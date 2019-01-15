@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/registration","/error","/springbootbroductsystem.herokuapp.com").permitAll()
+                .antMatchers("/","/registration","/error").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/moderator").access("hasRole('ROLE_MODERATOR')")

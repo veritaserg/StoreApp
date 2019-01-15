@@ -29,7 +29,7 @@ public class UserController {
 
 
 
-    @RequestMapping(value = {"/springbootbroductsystem.herokuapp.com/login","/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login","/"}, method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
 
         if (error != null) {
