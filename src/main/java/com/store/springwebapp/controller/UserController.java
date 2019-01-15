@@ -26,10 +26,8 @@ public class UserController {
     private RoleService roleService;
     @Autowired
     private UserValidator userValidator;
-    @RequestMapping(value = {"/springbootbroductsystem.herokuapp.com"}, method = RequestMethod.GET)
-    public String Test() {
-        return "test";
-    }
+
+
 
     @RequestMapping(value = {"/login","/"}, method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
