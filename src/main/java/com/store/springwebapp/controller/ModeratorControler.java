@@ -19,7 +19,7 @@ public class ModeratorControler {
     @Autowired
     ManufacturerService manufacturerService;
 
-    @RequestMapping(value = "/moderator", method = RequestMethod.GET)
+    @RequestMapping(value = {"/moderator","/moderator/admin"}, method = RequestMethod.GET)
     public String moderator(Model model) {
         model.addAttribute("productList", productService.findAll());
         model.addAttribute("manufactureList", manufacturerService.findAll());
