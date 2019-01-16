@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/veritaserg/StoreApp.svg?branch=master)](https://travis-ci.org/veritaserg/StoreApp)
+[![Build Status](https://travis-ci.org/veritaserg/Spring-boot-product-system.svg?branch=master)](https://travis-ci.org/veritaserg/Spring-boot-product-system)
 
 
 # Spring-Boot-Product-System
