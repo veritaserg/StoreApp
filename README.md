@@ -19,6 +19,14 @@ Spring Boot Crud Application with Thymeleaf, JPA, Spring Security
 - MySQL
 - Travis
 
+### Start application
+
+- Go to https://aqueous-forest-57982.herokuapp.com
+- User Name : "admin"
+- Password : "qwerty"
+- When creating a new user, 
+you need to enter a password to confirm registration : "user"
+
 ## Screenshots
 
 [![1.jpg](https://i.postimg.cc/s2JKzcYF/1.jpg)](https://postimg.cc/Y4hQfQD8)

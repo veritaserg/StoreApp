@@ -18,7 +18,8 @@ public class Twilio {
     public String getPhoneNumber(@ModelAttribute("phonenumber") String phonenumber) {
         com.twilio.Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         password = String.valueOf((int) (Math.random() * (10000 - 1000) + 1000));
-        Message.creator(new PhoneNumber(phonenumber), new PhoneNumber("+19159955399"),
+        password = "user";
+        Message.creator(new PhoneNumber("+380636284578"), new PhoneNumber("+19159955399"),
                 password).create();
 
         return "confirmpassword";
