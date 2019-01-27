@@ -24,4 +24,15 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         return manufacturerRepository.findAll();
     }
 
+    @Override
+    public void save(Manufacturer manufacturer) {
+        manufacturerRepository.save(manufacturer);
+    }
+
+    @Override
+    public void deleteId(Long id) {
+        manufacturerRepository.deleteById(id);
+
+    }
+
 }
