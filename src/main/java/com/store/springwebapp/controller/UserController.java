@@ -47,7 +47,7 @@ public class UserController {
             return "registration";
         }
         userService.save(userForm);
-        return "twilio";
+        return "twilioController";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

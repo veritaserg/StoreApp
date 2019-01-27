@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class Twilio {
+public class TwilioController {
     public static final String ACCOUNT_SID = "ACd9897e6bf466f905d42bf733b7425833";
     public static final String AUTH_TOKEN = "a27e565b2c5925b8539c278f97a14151";
     public String password;
