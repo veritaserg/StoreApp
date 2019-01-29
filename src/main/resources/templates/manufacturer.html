@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
     <title>Manufacturer</title>
+    <style>
+        body {
+            background: #e8edff;
+            color: #669;
+        }
+
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            max-width: 70%;
+            width: 70%;
+            text-align: center;
+            border-collapse: collapse;
+            border-top: 7px solid #9baff1;
+            border-bottom: 7px solid #9baff1;
+        }
+
+        tr {
+            font-size: 13px;
+            font-weight: normal;
+            background: #e8edff;
+            border-right: 1px solid #9baff1;
+            border-left: 1px solid #9baff1;
+            color: #039;
+            padding: 8px;
+        }
+
+        td {
+            background: #e8edff;
+            border-right: 1px solid #aabcfe;
+            border-left: 1px solid #aabcfe;
+            color: #669;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
-<h2>Manufacturer</h2>
+<h1 th:inline="text">Manufacturer Application</h1>
+
+<div th:if="${not #lists.isEmpty(manufacturerList)}">
+    <h2>Manufacturer List</h2>
+
+    <table class="table table-striped">
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Delete</th>
+
+        </tr>
+        <tr th:each="manufacturer: ${manufacturerList}">
+            <td th:text="${manufacturer.id}"></td>
+            <td th:text="${manufacturer.name}"></td>
+                        <td><a th:href="@{/manufacturer/delete/{id}(id=${manufacturer.id})}"><span>Delete</span></a></td>
+        </tr>
+
+    </table>
+</div>
+<h2>Add Manufacturer</h2>
+<div>
+    <form th:action="@{/manufacturer/add}" method="post">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" class="form-control"/></td>
+            </tr>
+
+            <td>
+            </td>
+            <td>
+                <button type="submit">Save</button>
+            </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

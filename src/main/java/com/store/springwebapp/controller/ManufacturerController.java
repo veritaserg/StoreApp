@@ -18,7 +18,7 @@ public class ManufacturerController {
 
     @RequestMapping(value = "/manufacturer", method = RequestMethod.GET)
     public String manufacturer(Model model) {
-        model.addAttribute("manufactureList", manufacturerService.findAll());
+        model.addAttribute("manufacturerList", manufacturerService.findAll());
         return "manufacturer";
     }
     @RequestMapping(value = "/manufacturer/add", method = RequestMethod.POST)
@@ -27,13 +27,13 @@ public class ManufacturerController {
 
         return "redirect:/manufacturer";
     }
-    @RequestMapping("/manufacturer/{id}")
+    @RequestMapping("/manufacturer/delete/{id}")
     public String deleteManufacturer(@PathVariable("id") Long id) {
         manufacturerService.deleteId(id);
         return "redirect:/manufacturer";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/manufacturer/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("manufacturer") Manufacturer manufacturer) {
         manufacturerService.save(manufacturer);
 
