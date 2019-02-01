@@ -21,7 +21,7 @@
         <tr th:each="product: ${productList}">
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
-            <td th:text="${product.cost}&#36"></td>
+            <td th:text="${product.cost}"></td>
             <td th:text="${product.manufacturer.getName()}"></td>
             <td th:text="${product.createdDate}"></td>
             <td th:text="${product.expirationDate}"></td>
