@@ -35,13 +35,15 @@ public class Product {
     private Manufacturer manufacturer;
 
 
-    @Column(name = "createdDate")
+    @Column(name = "created_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
 
-    @Column(name = "term")
-    private int term;
+    @Column(name = "expiration_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date expirationDate;
 
 
 }

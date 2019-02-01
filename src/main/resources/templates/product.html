@@ -12,19 +12,19 @@
     <table class="table table-striped">
         <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Description</th>
             <th>Cost</th>
             <th>Manufacturer</th>
-            <th>CreatedDate</th>
-            <th>Term(days)</th>
+            <th>Created Date</th>
+            <th>Expiration Date</th>
         </tr>
         <tr th:each="product: ${productList}">
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
-            <td th:text="${product.cost}"></td>
+            <td th:text="${product.cost}&#36"></td>
             <td th:text="${product.manufacturer.getName()}"></td>
             <td th:text="${product.createdDate}"></td>
-            <td th:text="${product.term}"></td>
+            <td th:text="${product.expirationDate}"></td>
         </tr>
     </table>
 </div>

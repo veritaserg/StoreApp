@@ -26,9 +26,6 @@ public class ProductController {
     @Autowired
     private SecurityService securityService;
 
-    @Autowired
-    private ManufacturerServiceImpl manufacturerService;
-
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String productList(Model model) {
         model.addAttribute("productList", productService.findAll());

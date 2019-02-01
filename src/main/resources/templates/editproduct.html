@@ -17,7 +17,7 @@
                 <form th:object="${product}" th:action="@{/save}" method="post">
                     <tr
                             class="form-group">
-                        <td><label for="name">Name</label></td>
+                        <td><label for="name">Description</label></td>
                         <td><input type="hidden" class="form-control" id="id" th:field="*{id}"/>
                             <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Name"/>
                         </td>
@@ -49,8 +49,8 @@
                     </tr>
 
                     <tr class="form-group">
-                        <td><label for="term">Term</label></td>
-                        <td><input type="text" class="form-control" id="term" th:field="*{term}" placeholder="term"/>
+                        <td><label for="expirationDate">ExpirationDate</label></td>
+                        <td><input type="date" class="form-control" id="expirationDate" th:field="*{expirationDate}" placeholder="expirationDate"/>
                         </td>
                     </tr>
                     <td>

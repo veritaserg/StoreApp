@@ -47,7 +47,7 @@
             <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="term" type="int">
+            <column name="expiration_date" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="manufacturer_id" type="int">

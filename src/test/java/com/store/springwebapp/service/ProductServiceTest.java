@@ -32,7 +32,7 @@ public class ProductServiceTest {
         product.setCost(BigDecimal.valueOf(150));
         product.setCreatedDate(new Date());
         product.setManufacturer(manufacturer);
-        product.setTerm(150);
+        product.setExpirationDate(new Date());
 
         productRepository.save(product);
 
